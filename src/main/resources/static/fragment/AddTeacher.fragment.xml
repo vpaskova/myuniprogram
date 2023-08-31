@@ -1,0 +1,32 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:l="sap.ui.layout"
+        xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core">
+    <Dialog id="addTeacherDialog" title="Преподавател">
+        <beginButton>
+            <Button text="Запази" type="Emphasized" press="handleTeacherSaveButton"/>
+        </beginButton>
+        <endButton>
+            <Button text="Откажи" press="handleAddTeacherDialogCancelButton"/>
+        </endButton>
+        <l:VerticalLayout
+                class="sapUiContentPadding"
+                width="100%">
+            <f:SimpleForm
+                    id="addTeacherForm"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    singleContainerFullSize="false">
+                <Label text="Име" labelFor="firstnameTeacher"/>
+                <Input id="firstnameTeacher" maxLength="255" required="true"/>
+                <Label text="Фамилия" labelFor="lastnameTeacher"/>
+                <Input id="lastnameTeacher" maxLength="255" required="true"/>
+                <Label text="Email" labelFor="emailTeacher"/>
+                <Input id="emailTeacher" maxLength="255" required="true"/>
+                <Label text="Парола" labelFor="passwordTeacher"/>
+                <Input id="passwordTeacher" maxLength="255" required="true"/>
+            </f:SimpleForm>
+        </l:VerticalLayout>
+    </Dialog>
+</core:FragmentDefinition>

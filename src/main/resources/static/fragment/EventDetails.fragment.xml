@@ -1,0 +1,62 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core">
+    <ResponsivePopover
+            id="detailsPopover"
+            title="{course}"
+            class="sapUiResponsivePadding"
+            placement="Auto">
+        <endButton>
+            <Button text="Редактирай" type="Emphasized" press="handleEditButton" visible="{/buttonVisible}"/>
+        </endButton>
+        <f:SimpleForm
+                id="appointmentEditForm"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                singleContainerFullSize="false">
+            <VBox width="25rem" alignItems="Center" justifyContent="Center">
+                <HBox width="100%" justifyContent="SpaceBetween" class="sapuiSmallMarginBottom">
+                    <VBox width="50%">
+                        <Label text="Час на започване" labelFor="startDateText"/>
+                        <Text id="startDateText" text="{path: 'start', formatter: '.formatDate'}"/>
+                    </VBox>
+                    <VBox width="30%">
+                        <Label text="Локация" labelFor="locationText"/>
+                        <Text id="locationText" text="{location}"/>
+                    </VBox>
+                </HBox>
+                <HBox width="100%" justifyContent="SpaceBetween" class="sapuiSmallMarginBottom">
+                    <VBox width="50%">
+                        <Label text="Час на приключване" labelFor="endtDateText"/>
+                        <Text id="endDateText" text="{path: 'end', formatter: '.formatDate'}"/>
+                    </VBox>
+                    <VBox width="30%">
+                        <Label text="Дисциплина" labelFor="courseText"/>
+                        <Text id="courseText" text="{course}"/>
+                    </VBox>
+                </HBox>
+                <HBox width="100%" justifyContent="SpaceBetween" class="sapuiSmallMarginBottom">
+                    <VBox width="50%">
+                        <Label text="Допълнителна информация" labelFor="infoText"/>
+                        <Text id="infoText" text="{info}"/>
+                    </VBox>
+                    <VBox width="30%" visible="{/teacherVisible}">
+                        <Label text="Преподавател" labelFor="teacherText"/>
+                        <Text id="teacherText" text="{teacher}"/>
+                    </VBox>
+                </HBox>
+                <HBox width="100%" justifyContent="SpaceBetween" class="sapuiSmallMarginBottom" visible="{/buttonVisible}">
+                    <VBox width="50%">
+                        <Label text=" Факултет и специалност" labelFor="uniMajorText"/>
+                        <Text id="uniMajorText" text="{uniMajor}"/>
+                    </VBox>
+                    <VBox width="30%">
+                        <Label text="Група" labelFor="groupText"/>
+                        <Text id="groupText" text="{group}"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </f:SimpleForm>
+    </ResponsivePopover>
+</core:FragmentDefinition>

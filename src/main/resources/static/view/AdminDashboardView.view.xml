@@ -1,0 +1,64 @@
+<mvc:View
+        controllerName="myuniprogram.controller.AdminDashboardView"
+        xmlns="sap.m"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns:tnt="sap.tnt"
+        xmlns:core="sap.ui.core"
+        height="100%"
+        class="side-navigation-demo">
+    <tnt:ToolPage id="dashboard">
+        <tnt:header>
+            <tnt:ToolHeader>
+                <Title level="H1" text="Моята програма">
+                    <layoutData>
+                        <OverflowToolbarLayoutData shrinkable="true"/>
+                    </layoutData>
+                </Title>
+                <ToolbarSpacer>
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px"/>
+                    </layoutData>
+                </ToolbarSpacer>
+                <tnt:ToolHeaderUtilitySeparator/>
+                <Avatar
+                        id="userAvatar"
+                        displaySize="XS"
+                        press="onAvatarPress"
+                        backgroundColor="Accent5"/>
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:sideContent>
+            <tnt:SideNavigation expanded="true" selectedKey="{/selectedKey}" itemSelect="onNavigationItemSelect">
+                <tnt:NavigationList items="{/navigation}">
+                    <tnt:NavigationListItem key="{key}" text="{title}" icon="{icon}"/>
+                </tnt:NavigationList>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+       <tnt:mainContents>
+           <NavContainer id="pageContainer" initialPage="allTimetables">
+               <pages>
+                   <Page id="allTimetables" showHeader="false">
+                       <content>
+                           <core:Fragment fragmentName="myuniprogram.fragment.AllTimetables" type="XML"/>
+                       </content>
+                   </Page>
+                   <Page id="allStudents" showHeader="false">
+                       <content>
+                           <core:Fragment fragmentName="myuniprogram.fragment.AllStudent" type="XML"/>
+                       </content>
+                   </Page>
+                   <Page id="allTeachers" showHeader="false">
+                       <content>
+                           <core:Fragment fragmentName="myuniprogram.fragment.AllTeacher" type="XML"/>
+                       </content>
+                   </Page>
+                   <Page id="allAdmins" showHeader="false">
+                       <content>
+                           <core:Fragment fragmentName="myuniprogram.fragment.AllAdmin" type="XML"/>
+                       </content>
+                   </Page>
+               </pages>
+           </NavContainer>
+       </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

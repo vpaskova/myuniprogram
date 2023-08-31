@@ -1,0 +1,64 @@
+<mvc:View
+        controllerName="myuniprogram.controller.LoginView"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns:core="sap.ui.core"
+        xmlns:unified="sap.ui.unified"
+        xmlns:tnt="sap.tnt"
+        xmlns:f="sap.ui.layout.form"
+        xmlns:l="sap.ui.layout"
+        xmlns="sap.m">
+    <tnt:ToolPage id="toolPageLogin">
+        <tnt:header>
+            <tnt:ToolHeader>
+                <Title level="H1" text="Моята програма">
+                    <layoutData>
+                        <OverflowToolbarLayoutData shrinkable="true"/>
+                    </layoutData>
+                </Title>
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <NavContainer id="pageContainerLogin" initialPage="LoginPage">
+            <pages>
+                    <Page id="LoginPage" showHeader="false">
+                        <IllustratedMessage
+                                title="Добре дошли в &quot;Моята програма&quot;!"
+                                description="Тук ще намерите необходимата информация за седмичното Ви разписание. Първоначалната парола е Вашето ЕГН."
+                                illustrationType="sapIllus-NoActivities"
+                        />
+                        <content>
+                            <HBox justifyContent="Center" alignItems="Center" alignContent="Center" height="20%">
+                        <l:VerticalLayout
+                                class="sapUiContentPadding"
+                                width="100%">
+                            <f:SimpleForm
+                                    id="editPasswordForm"
+                                    editable="true"
+                                    layout="ResponsiveGridLayout"
+                                    singleContainerFullSize="false">
+                                <Label text="Въведете email" labelFor="user-email"/>
+                                <Input id="user-email" placeholder="email" maxLength="255"/>
+                                <Label text="Въведете парола" labelFor="user-password"/>
+                                <Input id="user-password" placeholder="парола" type="Password" maxLength="255"/>
+                                <Button  text="Вход" type="Emphasized" press="onLoginPress"/>
+                            </f:SimpleForm>
+                        </l:VerticalLayout>
+<!--                        <content>-->
+<!--                            <VBox class="login-form" fitContainer="true" justifyContent="Center" alignItems="Center" alignContent="Center">-->
+<!--                                <items>-->
+<!--                                    <Label text="Въведете email" labelFor="user-email"/>-->
+<!--                                    <Input id="user-email" placeholder="User email"/>-->
+<!--                                    <Label text="Въведете парола" labelFor="user-password"/>-->
+<!--                                    <Input id="user-password" placeholder="Password" type="Password"/>-->
+<!--                                    <Button class="login-button" text="Вход" type="Emphasized" press="onLoginPress"/>-->
+<!--                                </items>-->
+<!--                            </VBox>-->
+<!--                        </content>-->
+                            </HBox>
+                        </content>
+                    </Page>
+            </pages>
+            </NavContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

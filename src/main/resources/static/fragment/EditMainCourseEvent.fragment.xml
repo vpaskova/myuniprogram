@@ -1,0 +1,61 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:l="sap.ui.layout"
+        xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core">
+
+    <Dialog id="editMainCourseEventDialog" title="Учебно занятие">
+        <beginButton>
+            <Button text="Запази" type="Emphasized" press="handleMainCourseEventEditSaveButton"/>
+        </beginButton>
+        <endButton>
+            <Button text="Откажи" press="handleMainCourseEventEditCancelButton"/>
+        </endButton>
+        <l:VerticalLayout
+                class="sapUiContentPadding"
+                width="100%">
+            <f:SimpleForm
+                    id="editMainCourseEventForm"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    singleContainerFullSize="false">
+                <Label text="Изберете преподавател" labelFor="allTeachersMainCourseEventEdit"/>
+                <ComboBox
+                        id="allTeachersMainCourseEventEdit"
+                        placeholder="преподавател"
+                        required="true"
+                        items="{
+							path: '/teachers',
+							sorter: { path: 'text' }
+						}">
+                    <core:ListItem key="{id}" text="{firstName} {lastName}"/>
+                </ComboBox>
+                <Label text="Място" labelFor="locationMainCourseEventEdit"/>
+                <Input id="locationMainCourseEventEdit" maxLength="255" required="true"/>
+                <Label text="Изберете ден" labelFor="daysMainCourseEventEdit"/>
+                <ComboBox
+                        id="daysMainCourseEventEdit"
+                        placeholder="ден от седмицата"
+                        required="true"
+                        items="{
+							path: '/day',
+							sorter: { path: 'text' }
+						}">
+                    <core:ListItem key="{id}" text="{name}"/>
+                </ComboBox>
+                <Label text="Час на започване" labelFor="startTimeMainCourseEventEdit"/>
+                <TimePicker
+                        id="startTimeMainCourseEventEdit"
+                        displayFormat="short"
+                        required="true"
+                        change="handlePostponeChange"/>
+                <Label text="Час на приключване" labelFor="endTimeMainCourseEventEdit"/>
+                <TimePicker
+                        id="endTimeMainCourseEventEdit"
+                        displayFormat="short"
+                        required="true"
+                        change="handleDateTimePickerChange"/>
+            </f:SimpleForm>
+        </l:VerticalLayout>
+    </Dialog>
+</core:FragmentDefinition>

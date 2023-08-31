@@ -1,0 +1,74 @@
+<mvc:View
+        controllerName="myuniprogram.controller.TeacherView"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns:core="sap.ui.core"
+        xmlns:unified="sap.ui.unified"
+        xmlns:tnt="sap.tnt"
+        xmlns:f="sap.f"
+        xmlns="sap.m">
+    <tnt:ToolPage id="toolPageTeacher">
+        <tnt:header>
+            <tnt:ToolHeader>
+                <Title level="H1" text="Моята програма">
+                    <layoutData>
+                        <OverflowToolbarLayoutData shrinkable="true"/>
+                    </layoutData>
+                </Title>
+                <ToolbarSpacer>
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" minWidth="20px"/>
+                    </layoutData>
+                </ToolbarSpacer>
+                <tnt:ToolHeaderUtilitySeparator/>
+                <Avatar
+                        id="userAvatar"
+                        displaySize="XS"
+                        press="onAvatarPress"
+                        backgroundColor="Accent5"/>
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:mainContents>
+            <NavContainer id="pageContainerTeacher" initialPage="Home">
+                <pages>
+                    <Page id="Home" showHeader="false">
+                        <content>
+                            <f:SidePanel id="mySidePanel" sidePanelResizable="true" sidePanelMinWidth="35rem" toggle="onToggle">
+                                <f:mainContent>
+                                    <VBox class="sapUiSmallMargin">
+                                        <SinglePlanningCalendar
+                                                id="SPC1"
+                                                class="sapUiSmallMarginTop"
+                                                title= "Седмично разписание"
+                                                appointmentSelect="handleAppointmentSelect"
+                                                moreLinkPress="handleMoreLinkPress"
+                                                startHour="6"
+                                                endHour="22"
+                                                fullDay="false"
+                                                appointments="{path: '/appointments'}">
+                                            <views>
+                                                <SinglePlanningCalendarWorkWeekView key="WorkWeekView" title="Учебна седмица" />
+                                                <SinglePlanningCalendarDayView key="DayView" title="Ден" />
+<!--                                                <SinglePlanningCalendarWeekView key="WeekView" title="Week" />-->
+                                                <SinglePlanningCalendarMonthView key="MonthView" title="Месец" />
+                                            </views>
+                                            <appointments>
+                                                <unified:CalendarAppointment
+                                                        title= "{course}"
+                                                        text= "{uniMajor}, {location}"
+                                                        startDate= "{start}"
+                                                        endDate= "{end}">
+                                                </unified:CalendarAppointment>
+                                            </appointments>
+                                        </SinglePlanningCalendar>
+                                    </VBox>
+                                </f:mainContent>
+<!--                                <f:items>-->
+<!--                                </f:items>-->
+                            </f:SidePanel>
+                        </content>
+                    </Page>
+                </pages>
+            </NavContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

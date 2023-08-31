@@ -1,0 +1,40 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:l="sap.ui.layout"
+        xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core">
+    <Dialog id="modifyDialog" title="Title">
+        <beginButton>
+            <Button text="Запази" type="Emphasized" press="handleDialogSaveButton"/>
+        </beginButton>
+        <endButton>
+            <Button text="Откажи" press="handleDialogCancelButton"/>
+        </endButton>
+        <l:VerticalLayout
+                class="sapUiContentPadding"
+                width="100%">
+            <f:SimpleForm
+                    id="appointmentModifyForm"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    singleContainerFullSize="false">
+                <Label text="Локация" labelFor="location"/>
+                <Input id="location" maxLength="255" required="true"/>
+                <Label text="Допълнителна информация" labelFor="moreInfo"/>
+                <Input id="moreInfo" maxLength="255"/>
+                <Label text="От" labelFor="startDate"/>
+                <DateTimePicker
+                        id="startDate"
+                        displayFormat="short"
+                        required="true"
+                        change="handleDateTimePickerChange"/>
+                <Label text="До" labelFor="endDate"/>
+                <DateTimePicker
+                        id="endDate"
+                        displayFormat="short"
+                        required="true"
+                        change="handleDateTimePickerChange"/>
+            </f:SimpleForm>
+        </l:VerticalLayout>
+    </Dialog>
+</core:FragmentDefinition>

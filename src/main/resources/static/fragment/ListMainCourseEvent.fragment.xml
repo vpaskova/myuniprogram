@@ -1,0 +1,61 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:l="sap.ui.layout"
+        xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core">
+
+    <Dialog id="listMainCourseEventDialog">
+        <endButton>
+            <Button text="ОК" press="handleListMainCourseEventCancelButton"/>
+        </endButton>
+            <Table
+                    id="mainCourseEventsList"
+                    growing="true"
+                    growingThreshold="6"
+                    items="{
+								path: '/mainCourseEvents',
+								parameters: {
+									$count: true
+								}
+							}">
+                <columns>
+                    <Column id="courseColumnTimetable">
+                        <Text text="Дисциплина"/>
+                    </Column>
+                    <Column id="teacherColumnTimetable">
+                        <Text text="Преподавател"/>
+                    </Column>
+                    <Column id="locationColumnTimetable">
+                        <Text text="Локация"/>
+                    </Column>
+                    <Column id="dayColumnTimetable">
+                        <Text text="Ден"/>
+                    </Column>
+                    <Column id="fromColumnTimetable">
+                        <Text text="От"/>
+                    </Column>
+                    <Column id="toColumnTimetable">
+                        <Text text="До"/>
+                    </Column>
+                    <Column id="editMainCourseEventTimetableCell" width="11rem">
+                    </Column>
+                    <Column id="deleteMainCourseEventTimetableCell" width="11rem">
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text text="{course}"/>
+                            <Text text="{teacher}"/>
+                            <Text text="{location}"/>
+                            <Text text="{day}"/>
+                            <Text text="{start}"/>
+                            <Text text="{end}"/>
+                            <Button icon="sap-icon://action" text="Редактирай" press="handleMainCourseEventEditPress"/>
+                            <Button icon="sap-icon://delete" text="Изтрий" press="handleMainCourseEventDeletePress"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+    </Dialog>
+</core:FragmentDefinition>

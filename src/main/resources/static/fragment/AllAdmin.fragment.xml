@@ -1,0 +1,65 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:l="sap.ui.layout"
+        xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core">
+
+    <Table
+            id="adminList"
+            growing="true"
+            growingThreshold="10"
+            items="{
+								path: '/admins',
+								parameters: {
+									$count: true
+								}
+							}">
+        <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <Title text="Администратори" level="H2"/>
+                    <ToolbarSpacer/>
+                    <Button
+                            text="Добави администратор"
+                            icon="sap-icon://add-employee"
+                            press="loadAddAdminDialog"/>
+                    <ToolbarSpacer/>
+                    <SearchField
+                            id="searchFieldAdminFirstName"
+                            width="20%"
+                            placeholder="Име"
+                            search="onSearch('firstName', 'searchFieldAdminFirstName', 'adminList')"/>
+                    <SearchField
+                            id="searchFieldAdminLastName"
+                            width="20%"
+                            placeholder="Фамилия"
+                            search="onSearch('lastName', 'searchFieldAdminLastName', 'adminList')"/>
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+            <Column id="firstNameColumnAdmin">
+                <Text text="Име"/>
+            </Column>
+            <Column id="lastNameColumnAdmin">
+                <Text text="Фамилия"/>
+            </Column>
+            <Column id="emailColumnAdmin">
+                <Text text="email"/>
+            </Column>
+            <Column id="deleteAdminCell" width="9rem">
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                    <Text text="{firstName}"/>
+                    <Text text="{lastName}"/>
+                    <Text text="{email}"/>
+                    <Button icon="sap-icon://delete" text="Изтрий" press="handleUserDeletePress"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</core:FragmentDefinition>
+

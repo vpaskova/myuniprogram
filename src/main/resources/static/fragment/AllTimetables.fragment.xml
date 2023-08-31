@@ -1,0 +1,71 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:l="sap.ui.layout"
+        xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core">
+
+    <Table
+            id="timetableList"
+            growing="true"
+            growingThreshold="10"
+            items="{
+								path: '/timetables',
+								parameters: {
+									$count: true
+								}
+							}">
+        <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <Title text="Седмични разписания" level="H2"/>
+                    <ToolbarSpacer/>
+                    <Button
+                            text="Добави програма"
+                            icon="sap-icon://add"
+                            press="loadAddTimetableDialog"/>
+                    <ToolbarSpacer/>
+                    <SearchField
+                            id="searchFieldTimetableUniMajor"
+                            width="20%"
+                            placeholder="Специалност"
+                            search="onSearch('universityMajor', 'searchFieldTimetableUniMajor', 'timetableList')"/>
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+            <Column id="facultyColumnTimetable">
+                <Text text="Факултет"/>
+            </Column>
+            <Column id="majorColumnTimetable">
+                <Text text="Специалност"/>
+            </Column>
+            <Column id="yearColumnTimetable">
+                <Text text="Курс"/>
+            </Column>
+            <Column id="semesterColumnTimetable">
+                <Text text="Семестър"/>
+            </Column>
+            <Column id="groupColumnTimetable">
+                <Text text="Група"/>
+            </Column>
+            <Column id="listTimetableCell" width="11rem">
+            </Column>
+            <Column id="editTimetableCell" width="11rem">
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                    <Text text="{faculty}"/>
+                    <Text text="{universityMajor}"/>
+                    <Text text="{year}"/>
+                    <Text text="{semester}"/>
+                    <Text text="{group}"/>
+                    <Button icon="sap-icon://display" text="Виж предмети" press="handleListMainCourseEventPress"/>
+                    <Button icon="sap-icon://add" text="Добави предмет" press="handleAddMainCourseEventPress"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</core:FragmentDefinition>
+

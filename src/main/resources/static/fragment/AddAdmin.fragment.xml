@@ -1,0 +1,32 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:l="sap.ui.layout"
+        xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core">
+    <Dialog id="addAdminDialog" title="Администратор">
+        <beginButton>
+            <Button text="Запази" type="Emphasized" press="handleAdminSaveButton"/>
+        </beginButton>
+        <endButton>
+            <Button text="Откажи" press="handleAddAdminDialogCancelButton"/>
+        </endButton>
+        <l:VerticalLayout
+                class="sapUiContentPadding"
+                width="100%">
+            <f:SimpleForm
+                    id="addAdminForm"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    singleContainerFullSize="false">
+                <Label text="Име" labelFor="firstnameAdmin"/>
+                <Input id="firstnameAdmin" maxLength="255" required="true"/>
+                <Label text="Фамилия" labelFor="lastnameAdmin"/>
+                <Input id="lastnameAdmin" maxLength="255" required="true"/>
+                <Label text="Email" labelFor="emailAdmin"/>
+                <Input id="emailAdmin" maxLength="255" required="true"/>
+                <Label text="Парола" labelFor="passwordAdmin"/>
+                <Input id="passwordAdmin" maxLength="255" required="true"/>
+            </f:SimpleForm>
+        </l:VerticalLayout>
+    </Dialog>
+</core:FragmentDefinition>

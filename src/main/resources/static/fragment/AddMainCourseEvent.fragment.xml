@@ -1,0 +1,72 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:l="sap.ui.layout"
+        xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core">
+
+    <Dialog id="addMainCourseEventDialog" title="Дисциплина">
+        <beginButton>
+            <Button text="Запази" type="Emphasized" press="handleMainCourseEventSaveButton"/>
+        </beginButton>
+        <endButton>
+            <Button text="Откажи" press="handleMainCourseEventDialogCancelButton"/>
+        </endButton>
+        <l:VerticalLayout
+                class="sapUiContentPadding"
+                width="100%">
+            <f:SimpleForm
+                    id="addMainCourseEventForm"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    singleContainerFullSize="false">
+                <Label text="Изберете предмет" labelFor="courseByMajorMainCourseEvent"/>
+                <ComboBox
+                        id="courseByMajorMainCourseEvent"
+                        placeholder="предмет"
+                        required="true"
+                        items="{
+							path: '/courseByMajor',
+							sorter: { path: 'text' }
+						}">
+                    <core:ListItem key="{id}" text="{name}"/>
+                </ComboBox>
+                <Label text="Изберете преподавател" labelFor="allTeachersMainCourseEvent"/>
+                <ComboBox
+                        id="allTeachersMainCourseEvent"
+                        placeholder="преподавател"
+                        required="true"
+                        items="{
+							path: '/teachers',
+							sorter: { path: 'text' }
+						}">
+                    <core:ListItem key="{id}" text="{firstName} {lastName}"/>
+                </ComboBox>
+                <Label text="Място" labelFor="locationMainCourseEvent"/>
+                <Input id="locationMainCourseEvent" maxLength="255" required="true"/>
+                <Label text="Изберете ден" labelFor="daysMainCourseEvent"/>
+                <ComboBox
+                        id="daysMainCourseEvent"
+                        placeholder="ден от седмицата"
+                        required="true"
+                        items="{
+							path: '/day',
+							sorter: { path: 'text' }
+						}">
+                    <core:ListItem key="{id}" text="{name}"/>
+                </ComboBox>
+                <Label text="Час на започване" labelFor="startTimeMainCourseEvent"/>
+                <TimePicker
+                        id="startTimeMainCourseEvent"
+                        displayFormat="short"
+                        required="true"
+                        change="handlePostponeChange"/>
+                <Label text="Час на приключване" labelFor="endTimeMainCourseEvent"/>
+                <TimePicker
+                        id="endTimeMainCourseEvent"
+                        displayFormat="short"
+                        required="true"
+                        change="handleDateTimePickerChange"/>
+            </f:SimpleForm>
+        </l:VerticalLayout>
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,97 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:l="sap.ui.layout"
+        xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core">
+
+    <Table
+            id="studentList"
+            growing="true"
+            growingThreshold="10"
+            items="{
+								path: '/students',
+								parameters: {
+									$count: true
+								}
+							}">
+        <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <Title text="Студенти" level="H2"/>
+                    <ToolbarSpacer/>
+                    <Button
+                            text="Добави студент"
+                            icon="sap-icon://add-employee"
+                            press="loadAddStudentDialog"/>
+                    <ToolbarSpacer/>
+                    <SearchField
+                            id="searchFieldStudentFirstName"
+                            width="20%"
+                            placeholder="Име"
+                            search="onSearch('firstName', 'searchFieldStudentFirstName', 'studentList')"/>
+                    <SearchField
+                            id="searchFieldStudentLastName"
+                            width="20%"
+                            placeholder="Фамилия"
+                            search="onSearch('lastName', 'searchFieldStudentLastName', 'studentList')"/>
+                    <SearchField
+                            id="searchFieldStudentFacultyNum"
+                            width="20%"
+                            placeholder="Факултетен номер"
+                            search="onSearch('facultyNumber', 'searchFieldStudentFacultyNum', 'studentList')"/>
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+            <Column id="firstNameColumnStudent">
+                <Text text="Име"/>
+            </Column>
+            <Column id="lastNameColumnStudent">
+                <Text text="Фамилия"/>
+            </Column>
+            <Column id="facultyNumColumnStudent">
+                <Text text="Факултетен номер"/>
+            </Column>
+            <Column id="emailColumnStudent">
+                <Text text="email"/>
+            </Column>
+            <Column id="facultyColumnStudent" width="6rem">
+                <Text text="Факултет"/>
+            </Column>
+            <Column id="uniMajorColumnStudent" width="7rem">
+                <Text text="Специалност"/>
+            </Column>
+            <Column id="groupColumnStudent" width="5rem">
+                <Text text="Група"/>
+            </Column>
+            <Column id="yearColumnStudent" width="4rem">
+                <Text text="Курс"/>
+            </Column>
+            <Column id="semesterColumnStudent" width="6rem">
+                <Text text="Семестър"/>
+            </Column>
+            <Column id="editStudentCell" width="9rem">
+            </Column>
+            <Column id="deleteStudentCell" width="9rem">
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                    <Text text="{firstName}"/>
+                    <Text text="{lastName}"/>
+                    <Text text="{facultyNumber}"/>
+                    <Text text="{email}"/>
+                    <Text text="{faculty}"/>
+                    <Text text="{universityMajor}"/>
+                    <Text text="{group}"/>
+                    <Text text="{year}"/>
+                    <Text text="{semester}"/>
+                    <Button icon="sap-icon://action" text="Редактирай" press="handleStudentEditPress"/>
+                    <Button icon="sap-icon://delete" text="Изтрий" press="handleUserDeletePress"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</core:FragmentDefinition>
+

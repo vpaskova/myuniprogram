@@ -1,0 +1,47 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:l="sap.ui.layout"
+        xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core">
+
+    <Dialog id="editStudentDialog" title="Студент">
+        <beginButton>
+            <Button text="Запази" type="Emphasized" press="handleStudentEditSaveButton"/>
+        </beginButton>
+        <endButton>
+            <Button text="Откажи" press="handleStudentEditCancelButton"/>
+        </endButton>
+        <l:VerticalLayout
+                class="sapUiContentPadding"
+                width="100%">
+            <f:SimpleForm
+                    id="editStudentForm"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    singleContainerFullSize="false">
+                <Label text="Изберете курс" labelFor="yearStudentEdit"/>
+                <ComboBox
+                        id="yearStudentEdit"
+                        placeholder="курс"
+                        required="true"
+                        items="{
+							path: '/year',
+							sorter: { path: 'text' }
+						}">
+                    <core:ListItem key="{id}" text="{name}"/>
+                </ComboBox>
+                <Label text="Изберете семестър" labelFor="semesterStudentEdit"/>
+                <ComboBox
+                        id="semesterStudentEdit"
+                        placeholder="семестър"
+                        required="true"
+                        items="{
+							path: '/semester',
+							sorter: { path: 'text' }
+						}">
+                    <core:ListItem key="{id}" text="{name}"/>
+                </ComboBox>
+            </f:SimpleForm>
+        </l:VerticalLayout>
+    </Dialog>
+</core:FragmentDefinition>

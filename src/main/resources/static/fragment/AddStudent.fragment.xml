@@ -1,0 +1,81 @@
+<core:FragmentDefinition
+        xmlns="sap.m"
+        xmlns:l="sap.ui.layout"
+        xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core">
+    <Dialog id="addStudentDialog" title="Студент">
+        <beginButton>
+            <Button text="Запази" type="Emphasized" press="handleStudentSaveButton"/>
+        </beginButton>
+        <endButton>
+            <Button text="Откажи" press="handleAddStudentDialogCancelButton"/>
+        </endButton>
+        <l:VerticalLayout
+                class="sapUiContentPadding"
+                width="100%">
+            <f:SimpleForm
+                    id="addStudentForm"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    singleContainerFullSize="false">
+                <Label text="Име" labelFor="firstnameStudent"/>
+                <Input id="firstnameStudent" maxLength="255" required="true"/>
+                <Label text="Фамилия" labelFor="lastnameStudent"/>
+                <Input id="lastnameStudent" maxLength="255" required="true"/>
+                <Label text="Email" labelFor="emailStudent"/>
+                <Input id="emailStudent" maxLength="255" required="true"/>
+                <Label text="Парола" labelFor="passwordStudent"/>
+                <Input id="passwordStudent" maxLength="255" required="true"/>
+                <Label text="Факултетен номер" labelFor="facultyNumStudent"/>
+                <Input id="facultyNumStudent" maxLength="255" required="true"/>
+                <Label text="Изберете факултет" labelFor="facultyStudent"/>
+                <ComboBox
+                        id="facultyStudent"
+                        placeholder="факултет"
+                        change="handleSelectedItemStudent"
+                        required="true"
+                        items="{
+							path: '/faculties',
+							sorter: { path: 'text' }
+						}">
+                    <core:ListItem key="{id}" text="{name}"/>
+                </ComboBox>
+                <Label text="Изберете специалност" labelFor="majorStudent"/>
+                <ComboBox
+                        id="majorStudent"
+                        placeholder="специалност"
+                        required="true"
+                        items="{
+							path: '/majors',
+							sorter: { path: 'text' }
+						}">
+                    <core:ListItem key="{id}" text="{name}"/>
+                </ComboBox>
+                <Label text="Група" labelFor="groupStudent"/>
+                <Input id="groupStudent" maxLength="255" required="true"/>
+                <Label text="Изберете курс" labelFor="yearStudent"/>
+                <ComboBox
+                        id="yearStudent"
+                        placeholder="курс"
+                        required="true"
+                        items="{
+							path: '/year',
+							sorter: { path: 'text' }
+						}">
+                    <core:ListItem key="{id}" text="{name}"/>
+                </ComboBox>
+                <Label text="Изберете семестър" labelFor="semesterStudent"/>
+                <ComboBox
+                        id="semesterStudent"
+                        placeholder="семестър"
+                        required="true"
+                        items="{
+							path: '/semester',
+							sorter: { path: 'text' }
+						}">
+                    <core:ListItem key="{id}" text="{name}"/>
+                </ComboBox>
+            </f:SimpleForm>
+        </l:VerticalLayout>
+    </Dialog>
+</core:FragmentDefinition>
